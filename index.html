@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>樊艳红的简历</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+
+    <link rel="stylesheet" href="css/index.css"/>
+    <script>
+        var desW=640;//设计稿的宽度
+        var desFontSize=100;//设计稿根字体的大小
+        var winW=document.documentElement.clientWidth;//获取设备的宽度
+        //根据desW/winW=desFontSize/设置设备中字体的大小 设置设备字体大小
+        document.documentElement.style.fontSize=desFontSize*winW/desW+'px';
+    </script>
+</head>
+<body>
+<div id="main">
+    <!--CONTAINER-->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide page1">
+            <img src="images/page1-1.png" alt=""/>
+            <img src="images/page1-2.png" alt=""/>
+            <div class="myName">你好，我是樊艳红</div>
+            <div class="myResume">个人简历</div>
+        </div>
+            <div class="swiper-slide page2">
+                <img src="images/page2-1.png" alt=""/>
+                <img src="images/page2-2.png" alt=""/>
+                <img src="images/page2-3.png" alt=""/>
+                <div class="info-text">基本信息</div>
+                <div class="info-inner">
+                    <p>姓名：樊艳红</p>
+                    <p>性别：女</p>
+                    <p>年龄：24</p>
+                    <p>学历：大专</p>
+                    <p>毕业院校：青岛职业技术学院</p>
+                    <p>专业方向：软件技术</p>
+                    <p>户籍：山东</p>
+                </div>
+            </div>
+            <div class="swiper-slide page3">
+                <img src="images/page2-1.png" alt=""/>
+                <img src="images/page2-2.png" alt=""/>
+                <img src="images/page2-3.png" alt=""/>
+                <div class="info-text">专业技能</div>
+                <div class="info-inner">
+                    <p>1、HTML/HTML5、CSS/CSS3</p>
+                    <p>2、Javascript、Jquery、Bootstrap</p>
+                    <p>3、less、swiper、Zepto</p>
+                    <p>4、使用AJAX、JSONP进行前后端数据交互</p>
+                    <p>5、掌握angular,了解React、VUE</p>
+                    <p>6、了解node</p>
+                    <p>7、使用gulp/webpack打包压缩工具</p>
+                    <p>8、使用Git/SVN源代码管理器</p>
+                    <p>9、熟悉ES6的常用用法</p>
+                </div>
+            </div>
+            <div class="swiper-slide page4">
+                <img src="images/page2-1.png" alt=""/>
+                <img src="images/page2-2.png" alt=""/>
+                <img src="images/page2-3.png" alt=""/>
+                <div class="info-text">工作经验</div>
+                <div class="info-inner">
+                    <div class="info-innerA">
+                        <h2>公司名称</h2>
+                        <p>天时信业科技有限公司</p>
+                    </div>
+                    <div class="info-innerB">
+                        <h2>项目经验</h2>
+                        <p>CRM员工信息管理系统</p>
+                        <p>书店商城</p>
+                        <p>昌吉银行webApp宣传</p>
+                        <p>新疆农商行CRM系统</p>
+                        <p>昌吉农商行门户pc/移动</p>
+                        <p>移动端投票项目</p>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide page5">
+                <img src="images/page5-1.png" alt=""/>
+                <img src="images/page5-2.png" alt=""/>
+                <div class="cal-md">联系方式</div>
+                <div class="info-inner">
+                    <p>联系电话:150-5300-9545</p>
+                    <p>邮箱:1254834557@qq.com</p>
+                    <img src="images/page5-3.jpg" alt=""/>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script src="js/swiper.min.js"></script>
+<script>
+
+    var mySwiper=new Swiper('.swiper-container',{
+        direction:'vertical',//纵向滑屏
+        loop:true,//循环模式
+        onSlideChangeEnd:function(swiper){
+            //获得所有滑块
+            var slides=swiper.slides;
+            var curIndex=swiper.activeIndex;//当前活动的滑块的索引
+            var trueSlideNum=slides.length-2;//真实滑块的个数=所有滑块的个数-2
+            var lastSlideNum=trueSlideNum+1;//最后一个滑块的索引
+            [].forEach.call(slides,function(item,index){
+                item.id="";//去掉ID
+                if(index==curIndex){
+                    /*slides[index].id="page"+(index+1);*/
+                    switch (index){
+                        case 0:
+                            item.id="page"+trueSlideNum;
+                            break;
+                        case lastSlideNum://最后一个滑块是真实的第一个滑块
+                            item.id="page1";
+                            break;
+                        default :
+                            item.id="page"+curIndex;
+                    }
+                }
+            });
+        },
+        onInit:function(swiper){
+            //初始化完成后给第一张滑块增加动画效果
+             /*var slides=swiper.slides;
+             slides[0].id="page1";*/
+
+        }
+
+    });
+</script>
+
+</body>
+</html>
